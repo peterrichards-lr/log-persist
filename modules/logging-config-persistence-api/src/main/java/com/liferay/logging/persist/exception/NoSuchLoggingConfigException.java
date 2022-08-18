@@ -13,14 +13,11 @@
  */
 package com.liferay.logging.persist.exception;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.portal.kernel.exception.NoSuchModelException;
 
 /**
  * @author Brian Wing Shun Chan
  */
-@ProviderType
 public class NoSuchLoggingConfigException extends NoSuchModelException {
 
 	public NoSuchLoggingConfigException() {
@@ -30,12 +27,12 @@ public class NoSuchLoggingConfigException extends NoSuchModelException {
 		super(msg);
 	}
 
-	public NoSuchLoggingConfigException(String msg, Throwable cause) {
-		super(msg, cause);
+	public NoSuchLoggingConfigException(String msg, Throwable throwable) {
+		super(msg, throwable);
 	}
 
-	public NoSuchLoggingConfigException(Throwable cause) {
-		super(cause);
+	public NoSuchLoggingConfigException(Throwable throwable) {
+		super(throwable);
 	}
 
 }

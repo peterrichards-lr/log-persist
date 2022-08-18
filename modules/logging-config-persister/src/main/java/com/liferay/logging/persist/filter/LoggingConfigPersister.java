@@ -1,12 +1,5 @@
 package com.liferay.logging.persist.filter;
 
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.PortletException;
-import javax.portlet.filter.ActionFilter;
-import javax.portlet.filter.FilterChain;
-import javax.portlet.filter.FilterConfig;
-import javax.portlet.filter.PortletFilter;
 
 import com.liferay.logging.persist.model.LoggingConfig;
 import com.liferay.logging.persist.service.LoggingConfigLocalService;
@@ -19,11 +12,17 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
+import javax.portlet.filter.ActionFilter;
+import javax.portlet.filter.FilterChain;
+import javax.portlet.filter.FilterConfig;
+import javax.portlet.filter.PortletFilter;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
 
-import org.apache.log4j.Level;
 
 /**
  * class LoggingConfigPersister: This is a portlet filter implementation to attach to what the server administration
@@ -106,7 +105,7 @@ public class LoggingConfigPersister implements ActionFilter {
 
 				// extract the priority from the request
 				String priority = ParamUtil.getString(
-					actionRequest, name, Level.INFO.toString());
+						actionRequest, name,"INFO");
 
 				// update the logger details in the db
 				_loggingConfigLocalService.updateLogger(loggerName, priority);
@@ -139,7 +138,7 @@ public class LoggingConfigPersister implements ActionFilter {
 	}
 
 	@Override
-	public void init(FilterConfig filterConfig) throws PortletException {
+	public void init(FilterConfig filterConfig) {
 		// does nothing
 	}
 
